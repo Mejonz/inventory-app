@@ -1,7 +1,11 @@
 import { Pool } from 'pg';
 import { loadEnvFile } from 'node:process';
 
-loadEnvFile();
+// loadEnvFile();
+
+if (process.env.NODE_ENV !== 'production') {
+    loadEnvFile({ quiet: true });
+}
 
 //pool settings for test db
 // export const pool = new Pool({
