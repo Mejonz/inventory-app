@@ -1,0 +1,72 @@
+@font-face {
+    font-family: pixel-font;
+    src: url(PixelifySans-VariableFont_wght.ttf);
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: pixel-font, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+input {
+    font-family: inherit;
+}
+
+select {
+    font-family: inherit;
+}
+
+option {
+    font-family: inherit;
+}
+
+button {
+    font: inherit;
+    font-size: inherit;
+    color: white;
+    background-color: black;
+    padding: 0.2rem;
+    border: 3px solid white;
+}
+button:hover {
+    background-color: gray;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    border: 2px white solid;
+    padding: 0.2rem;
+    background-color: rgb(80, 79, 79);
+}
+
+.updateItemForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid white;
+    padding: 1.5rem 8rem;
+}
+
+form > * {
+    margin: 0.2rem;
+}
+
+.deleteItemForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid white;
+    padding: 1.5rem 8rem;
+}

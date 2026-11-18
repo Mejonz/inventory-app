@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <div class="itemsList">
+            <h2>Pedals</h2>
+            <% if (pedals.length === 0) { %>
+                <h3>No Matching Results</h3>
+            <% }
+            else { %>
+                <ul>
+                    <% pedals.forEach((pedal) => { %>
+                        <li>
+                            <p>Item ID: <%= pedal.item_id %></p>
+                            <p>Item name: <%= pedal.item_name %></p>
+                            <p>Item type: <%= pedal.item_type %></p>
+                            <p>Brand:<%= pedal.item_brand %></p>
+                            <p>Price: $<%= pedal.item_price %></p>
+                            <p>Quantity: <%= pedal.item_quantity %></p>
+                            <a href="/item/<%= pedal.item_id %>">Item Details</a>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } %>
+        </div>
+        <a href="javascript:history.back()">Back</a>
+        <a href="/">Home</a>
+    </body>
+</html>

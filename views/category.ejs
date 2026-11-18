@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <ul class="typesList">
+            <% types.forEach((type) => { %>
+            <li>
+                <a href="/category/<%= type.type_name %>"><%= type.type_name %></a>
+            </li>
+            <% }) %>
+        </ul>
+        <%- include("errors.ejs") %>
+        <form action="/category" method="POST">
+            <h2>Add a type of pedal</h2>
+            <label for="newType">Type: </label>
+            <input type="text" name="newType">
+            <label for="adminPw">Password:</label>
+            <input type="password" name="adminPw">
+            <button type="submit">Add</button>
+        </form>
+        <footer>
+            <a href="/">Home</a>
+        </footer>
+    </body>
+</html>

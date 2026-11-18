@@ -1,0 +1,10 @@
+GET
+view by category
+view by brand
+view item
+search item
+delete item
+
+POST
+add item
+update item

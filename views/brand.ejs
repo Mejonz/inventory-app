@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <ul class="typesList">
+            <% brands.forEach((brand) => { %>
+            <li>
+                <a href="/brand/<%= brand.brand_name %>"><%= brand.brand_name %></a>
+            </li>
+            <% }) %>
+        </ul>
+        <%- include("errors.ejs") %>
+        <form action="/brand" method="POST">
+            <h2>Add a brand</h2>
+            <label for="newBrand">Brand: </label>
+            <input type="text" name="newBrand">
+            <label for="adminPw">Password: </label>
+            <input type="password" name="adminPw">
+            <button type="submit">Add</button>
+        </form>
+        <form action="/deleteBrand" method="POST">
+            <h2>Delete Brand</h2>
+            <label for="brandToDelete">Brand: </label>
+            <select name="brandToDelete">
+                <option value="">Select a brand</option>
+                <% brands.forEach((brand) => { %>
+                <option value="<%= brand.brand_name %>"><%= brand.brand_name %></option>
+            <% }) %>
+            </select>
+            <label for="adminPw">Password:</label>
+            <input type="password" name="adminPw">
+            <button type="submit">Delete Brand</button>
+        </form>
+        <footer>
+            <a href="/">Home</a>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <div class="searchbar">
+            <h2>Search Item</h2>
+            <form action="/search" method="GET">
+                <label for="targetItem">Item name:</label>
+                <input type="text" name="targetItem" id="targetItem">
+                <button type="submit">Search!</button>
+            </form>
+        </div>
+        <div class="navbar">
+            <a href="/category">View by Type</a>
+            <a href="/brand">View by Brand</a>
+        </div>
+        <div class="itemsList">
+            <h2>Pedals</h2>
+            <% if (pedals.length === 0) { %>
+                <h3>No Matching Results</h3>
+            <% }
+            else { %>
+                <ul class="pedalList">
+                    <% pedals.forEach((pedal) => { %>
+                        <li>
+                            <p>Item ID: <%= pedal.item_id %></p>
+                            <p>Item name: <%= pedal.item_name %></p>
+                            <p>Item type: <%= pedal.item_type %></p>
+                            <p>Brand:<%= pedal.item_brand %></p>
+                            <p>Price: $<%= pedal.item_price %></p>
+                            <p>Quantity: <%= pedal.item_quantity %></p>
+                            <a href="/item/<%= pedal.item_id %>">Item Details</a>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } %>
+        </div>
+        <h2>Add a pedal</h2>
+        <form class="addPedalForm" action="/new" method="POST">
+            <label for="pedalName">Pedal:</label>
+            <input type="text" name="pedalName">
+            <label for="pedalType">Type:</label>
+            <select name="pedalType">
+                <option value="">Select a type</option>
+                <%types.forEach((type) => { %>
+                    <option value="<%= type.type_name %>"><%= type.type_name %></option>
+                <% }) %>
+            </select>
+            <label for="pedalBrand">Brand:</label>
+            <select name="pedalBrand">
+                <option value="">Select a brand</option>
+                <% brands.forEach((brand) => { %>
+                    <option value="<%= brand.brand_name %>"><%= brand.brand_name %></option>
+                <% }) %>
+            </select>
+            <label for="pedalPrice">Price:</label>
+            <input type="number" name="pedalPrice" step="0.01">
+            <label for="pedalQuantity">Quantity:</label>
+            <input type="number" name="pedalQuantity">
+            <label for="adminPw">Password:</label>
+            <input type="password" name="adminPw">
+            <button type="submit">Add pedal!</button>
+        </form>
+        <%- include("errors.ejs") %>
+    </body>
+</html>

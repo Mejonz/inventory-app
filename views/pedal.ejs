@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/pedal.css">
+    </head>
+    <body>
+        <h1><%= title %></h1>
+            <form class="updateItemForm" action="/update" method="POST">
+                <h2>Pedal details</h2>
+                <label for="pedalId">ID:</label>
+                <input type="text" name="pedalId" value="<%= pedal[0].item_id %>" readonly>
+                <label for="pedalName">Pedal:</label>
+                <input type="text" name="pedalName" value="<%= pedal[0].item_name %>">
+                <label for="pedalType">Type:</label>
+                <select name="pedalType">
+                    <option value="">Select a type</option>
+                    <%types.forEach((type) => { %>
+                        <option value="<%= type.type_name %>" <%= pedal[0].type_name === type.type_name ? 'selected' : '' %>><%= type.type_name %></option>
+                    <% }) %>
+                </select>
+                <label for="pedalBrand">Brand:</label>
+                <select name="pedalBrand">
+                    <option value="">Select a brand</option>
+                    <% brands.forEach((brand) => { %>
+                        <option value="<%= brand.brand_name %>" <%= pedal[0].brand_name === brand.brand_name ? 'selected' : '' %>><%= brand.brand_name %></option>
+                    <% }) %>
+                </select>
+                <label for="pedalPrice">Price:</label>
+                <input type="number" name="pedalPrice" step="0.01" value="<%= pedal[0].item_price %>">
+                <label for="pedalQuantity">Quantity:</label>
+                <input type="number" name="pedalQuantity" value="<%= pedal[0].item_quantity %>">
+                <label for="adminPw">Password:</label>
+                <input type="password" name="adminPw">
+                <button type="submit">Update</button>
+            </form>
+            <form class="deleteItemForm" action="/deleteItem" method="POST">
+                <h2>Delete Pedal</h2>
+                <input type="hidden" name="pedalToDeleteId" value="<%= pedal[0].item_id %>">
+                <label for="adminPw">Password:</label>
+                <input type="password" name="adminPw">
+                <button type="submit">Delete Item</button>
+            </form>
+            <%- include("errors.ejs") %>    
+        <a href="javascript:history.back()">Back</a>
+    </body>
+</html>
